@@ -235,42 +235,42 @@ const siteData = {
       company: "KGS Technology Group",
       role: "Senior AI Engineer",
       period: "Jun 2025 - Present",
-      description: "Led development of key features and mentored junior developers. Improved system performance by 40%.",
+      // description: "Led development of key features and mentored junior developers. Improved system performance by 40%.",
       location: "United States"
     },
     {
       company: "Humanitarians AI",
       role: "AI Data Engineer",
       period: "Aug 2024  - Jun 2025",
-      description: "Developed and maintained full-stack applications. Collaborated with cross-functional teams.",
+      // description: "Developed and maintained full-stack applications. Collaborated with cross-functional teams.",
       location: "Boston, MA, United States"
     },
     {
       company: "RP Tech (NVIDIA Partner)",
       role: "Solutions Engineer",
       period: "Sep 2021 - Aug 2022",
-      description: "Built RESTful APIs and integrated third-party services. Enhanced application security.",
+      // description: "Built RESTful APIs and integrated third-party services. Enhanced application security.",
       location: "India"
     },
     {
       company: "Ease My AI Pvt. Ltd.(Diycam)",
       role: "Computer Vision Engineer",
       period: "Jun 2020 - Aug 2021",
-      description: "Contributed to frontend development and automated testing processes.",
+      // description: "Contributed to frontend development and automated testing processes.",
       location: "India "
     },
     {
       company: "CDAC",
       role: "Data Scientist Intern",
       period: "Nov 2019 - Feb 2020",
-      description: "Assisted in development of internal tools and gained hands-on experience with agile methodologies.",
+      // description: "Assisted in development of internal tools and gained hands-on experience with agile methodologies.",
       location: "India"
     },
     {
       company: "BARC",
       role: "ML Research Engineer",
       period: "Jan 2019 - Mar 2019",
-      description: "Conducted research on emerging technologies and contributed to academic publications.",
+      // description: "Conducted research on emerging technologies and contributed to academic publications.",
       location: "India"
     },
   ],
