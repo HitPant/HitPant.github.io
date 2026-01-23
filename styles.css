@@ -236,13 +236,13 @@ a {
    Hero Section
    ============================================ */
 .hero {
-  min-height: 50vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 120px 24px 80px;
   position: relative;
+  overflow: hidden;
 }
 
 .hero::before {
@@ -251,14 +251,25 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: var(--container-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
 .hero-content {
-  max-width: 800px;
+  flex: 1;
+  max-width: 600px;
   position: relative;
   z-index: 1;
 }
@@ -290,18 +301,252 @@ a {
   font-size: 1.25rem;
   color: var(--color-text-secondary);
   margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 500px;
 }
 
 .hero-cta {
   display: flex;
   gap: 16px;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
+/* ============================================
+   Hero Profile Image
+   ============================================ */
+.hero-image {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulsing glow effect */
+.profile-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.2) 40%, transparent 70%);
+  filter: blur(40px);
+  animation: pulse-glow 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Rotating gradient border */
+.profile-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #667eea, #764ba2, #00d4ff, #764ba2, #667eea);
+  animation: rotate-gradient 4s linear infinite;
+  z-index: 1;
+}
+
+.profile-border::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: var(--color-bg-primary);
+  border-radius: 50%;
+}
+
+/* Profile frame with octagonal clip */
+.profile-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow:
+    0 0 0 4px rgba(102, 126, 234, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.profile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+}
+
+.profile-wrapper:hover .profile-frame img {
+  transform: scale(1.05);
+}
+
+/* Decorative floating elements */
+.profile-decoration {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-accent-gradient);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.profile-decoration-1 {
+  width: 12px;
+  height: 12px;
+  top: 20px;
+  right: 40px;
+  animation: float-decoration 5s ease-in-out infinite;
+}
+
+.profile-decoration-2 {
+  width: 8px;
+  height: 8px;
+  bottom: 40px;
+  left: 20px;
+  animation: float-decoration 7s ease-in-out infinite reverse;
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes rotate-gradient {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes float-decoration {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+
+  25% {
+    transform: translateY(-10px) translateX(5px);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(-5px) translateX(-5px);
+    opacity: 0.4;
+  }
+
+  75% {
+    transform: translateY(5px) translateX(3px);
+    opacity: 0.7;
+  }
+}
+
+/* Hero responsive */
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .profile-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+
+  .profile-border {
+    width: 260px;
+    height: 260px;
+  }
+
+  .profile-frame {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: auto;
+    padding: 120px 24px 60px;
+  }
+
+  .profile-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  .profile-border {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-frame {
+    width: 180px;
+    height: 180px;
+  }
+
+  .profile-decoration {
+    display: none;
+  }
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
 .btn {
   display: inline-flex;
   align-items: center;
