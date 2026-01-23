@@ -211,6 +211,14 @@ const siteData = {
         caption: "AI Accelerator Summit"
       },
       {
+        image: "img/IMG_1453.JPEG",
+        caption: "Representing Nvidia Edge AI stack"
+      },
+      {
+        image: "img/IMG_0956.JPEG",
+        caption: "Demonstrating Embedded & Edge AI"
+      },
+      {
         image: "img/1658393773366.jpg",
         caption: "Nvidia X RP Tech Jetson Meetup"
       },
