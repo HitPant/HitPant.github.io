@@ -445,7 +445,7 @@ function renderExperience() {
       <h4>${exp.role}</h4>
       <p class="company">${exp.company}</p>
       <p class="period">${exp.period} • ${exp.location}</p>
-      <p>${exp.description}</p>
+      ${exp.description ? `<p>${exp.description}</p>` : ''}
     </div>
   `).join('');
 }
