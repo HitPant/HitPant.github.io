@@ -203,10 +203,6 @@ const siteData = {
         caption: "GAI World 2025"
       },
       {
-        image: "img/1666362820088.jpg",
-        caption: "Computer Vision Summit"
-      },
-      {
         image: "img/1666362820150.jpg",
         caption: "AI Accelerator Summit"
       },
@@ -217,6 +213,10 @@ const siteData = {
       {
         image: "img/IMG_0956.JPEG",
         caption: "Demonstrating Embedded & Edge AI"
+      },
+      {
+        image: "img/1666362820088.jpg",
+        caption: "Computer Vision Summit"
       },
       {
         image: "img/1658393773366.jpg",
