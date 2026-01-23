@@ -46,9 +46,9 @@ const siteData = {
       link: "https://www.linkedin.com/pulse/building-cloud-native-retrieval-augmented-generation-rag-hitesh-pant-441ze/?trackingId=GZ5r0%2FFG3LXn%2BBlyhm1Z2Q%3D%3D",
     },
     {
-      title: "Vector Databases: What They Do and Why They Matter",
-      thumbnail: "img/Screenshot 2026-01-21 171906.png",
-      link: "https://hitpant.medium.com/vector-databases-what-they-do-and-why-they-matter-295e230e0b63",
+      title: "Serverless Guardrail for Safer LLM Interactions",
+      thumbnail: "img/AWS guardrail (1).png",
+      link: "https://www.linkedin.com/pulse/building-serverless-guardrail-layer-safer-llm-hitesh-pant-bk58e/?trackingId=N%2BMdkIUpSUmkQJGfo7p5dw%3D%3D",
     },
     {
       title: "OpenAI's Bold Move with Broadcom",
@@ -64,6 +64,11 @@ const siteData = {
       title: "Nvidia DeepStream-6.0 : Jetson Setup",
       thumbnail: "img/Screenshot 2026-01-21 172255.png",
       link: "https://hitpant.medium.com/nvidia-deepstream-6-0-jetson-setup-cbb8e4888757",
+    },
+    {
+      title: "Vector Databases: What They Do and Why They Matter",
+      thumbnail: "img/Screenshot 2026-01-21 171906.png",
+      link: "https://hitpant.medium.com/vector-databases-what-they-do-and-why-they-matter-295e230e0b63",
     },
     {
       title: "A Short Guide to SVM",
@@ -122,6 +127,12 @@ const siteData = {
       link: "https://github.com/HitPant/2D_U-Net-Liver-Segmentation",
       tags: ["Python", "Machine Learning", "API"]
     },
+    {
+      title: "Youtube Trends Analysis:AWS",
+      thumbnail: "img/Screenshot 2026-01-22 214413.png",
+      link: "https://github.com/HitPant/youtube-trends-analysis-Data_Engineering",
+      tags: ["Python", "Machine Learning", "API"]
+    },
   ],
 
   // Certifications
@@ -151,6 +162,64 @@ const siteData = {
       badge: "img/nvd.png"
     },
   ],
+
+  // Artifacts - Architecture Blueprints & Field Notes
+  artifacts: {
+    blueprints: [
+      {
+        image: "img/Lora-finetuning-AWS.png",
+        caption: "Cloud-Native Architecture for LoRA Fine-Tuning",
+        tags: ["LoRA", "AWS", "Bedrock", "Fine-Tuning"]
+      },
+      {
+        image: "img/customer support.png",
+        caption: "Summarization & Analytis Using Amazon Bedrock",
+        tags: ["Amazon Bedrock", "Quicksite", "Summarization", "LLM"]
+      },
+      {
+        image: "img/AWS_LLM_eval.png",
+        caption: "Serverless LLM evaluation pipeline",
+        tags: ["Evaluation", "LLM", "S3", "Llama"]
+      },
+      {
+        image: "img/RAG flow.png",
+        caption: "Cloud-Native RAG Architecture",
+        tags: ["RAG", "Vector DB", "Qdrant", "LlamaIndex"]
+      },
+      {
+        image: "img/AWS guardrail (1).png",
+        caption: "Serverless Guardrail for Safer LLM",
+        tags: ["Guardrail", "LLM", "Lambda", "Event-Driven"]
+      },
+      {
+        image: "img/architecture_diagram-yt_analytics.jpg",
+        caption: "Trend Analytics at Scale",
+        tags: ["Quicksight", "Data Lake", "Athena"]
+      }
+    ],
+    fieldNotes: [
+      {
+        image: "img/gAI.jpg",
+        caption: "GAI World 2025"
+      },
+      {
+        image: "img/1666362820088.jpg",
+        caption: "Computer Vision Summit"
+      },
+      {
+        image: "img/1666362820150.jpg",
+        caption: "AI Accelerator Summit"
+      },
+      {
+        image: "img/1658393773366.jpg",
+        caption: "Nvidia X RP Tech Jetson Meetup"
+      },
+      {
+        image: "img/codecamp.jpg",
+        caption: "Boston Code Camp 2024"
+      }
+    ]
+  },
 
   // Work Experience (6 items)
   experience: [
@@ -210,10 +279,11 @@ const siteData = {
 
   // Skills (categorized)
   skills: {
-    "Programming Languages": ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL"],
-    "Frameworks & Libraries": ["React", "Node.js", "Django", "FastAPI", "TensorFlow", "PyTorch"],
-    "Cloud & DevOps": ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "Terraform"],
-    "Databases": ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
-    "Tools & Others": ["Git", "Linux", "Agile/Scrum", "REST APIs", "GraphQL"]
+    "Programming": ["Python", "SQL", "Pandas", "NumPy", "FastAPI", "Git", "Linux"],
+    "Generative AI": ["RAG", "LlamaIndex", "LangChain", "LangGraph", "Prompt Engineering", "Multi-Agent Orchestration"],
+    "Cloud & Deployment": ["AWS (SageMaker, ECS, Lambda, API Gateway, CloudWatch)", "Docker", "CI/CD"],
+    "Pre-Sales Enablement": ["Solution Architecture", "PoC Development", "Workshops", "Client Success Enablement"],
+    "LLM Observability": ["W&B", "Opik", "LangSmith", "Evaluation Pipelines", "Monitoring", "Performance Benchmarking"],
+    "Vector Databases": ["Pinecone", "FAISS", "Qdrant", "PgVector", "Neo4j", "Graph Reasoning"]
   }
 };

@@ -1167,3 +1167,355 @@ footer p {
     padding: 20px;
   }
 }
+
+/* ============================================
+   Artifacts Section
+   ============================================ */
+#artifacts {
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, rgba(18, 18, 26, 0.5) 50%, var(--color-bg-primary) 100%);
+}
+
+.artifacts-subsection {
+  margin-bottom: 60px;
+}
+
+.artifacts-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.subsection-title svg {
+  color: var(--color-accent-primary);
+  flex-shrink: 0;
+}
+
+/* Architecture Blueprints Grid */
+.blueprints-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.blueprint-card {
+  position: relative;
+  background: var(--color-bg-card);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-medium);
+  cursor: pointer;
+}
+
+.blueprint-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.blueprint-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.blueprint-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-medium);
+}
+
+.blueprint-card:hover .blueprint-image img {
+  transform: scale(1.05);
+}
+
+.blueprint-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 15, 0.8) 0%, transparent 60%);
+  opacity: 0;
+  transition: var(--transition-medium);
+}
+
+.blueprint-card:hover .blueprint-image::after {
+  opacity: 1;
+}
+
+.blueprint-zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 48px;
+  height: 48px;
+  background: rgba(102, 126, 234, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition-medium);
+  z-index: 2;
+}
+
+.blueprint-zoom-icon svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.blueprint-card:hover .blueprint-zoom-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.blueprint-content {
+  padding: 16px 20px;
+}
+
+.blueprint-caption {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.blueprint-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.blueprint-tag {
+  padding: 4px 10px;
+  background: rgba(102, 126, 234, 0.12);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-accent-cyan);
+  transition: var(--transition-fast);
+}
+
+.blueprint-card:hover .blueprint-tag {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.35);
+}
+
+/* Field Notes Strip */
+.field-notes-strip {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.3) transparent;
+}
+
+.field-notes-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.field-notes-strip::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.field-notes-strip::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 3px;
+}
+
+.field-notes-strip::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+.field-note-card {
+  flex: 0 0 auto;
+  width: 320px;
+  scroll-snap-align: start;
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-medium);
+  cursor: pointer;
+}
+
+.field-note-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.field-note-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.field-note-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-medium);
+}
+
+.field-note-card:hover .field-note-image img {
+  transform: scale(1.05);
+}
+
+.field-note-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0.7) 60%, transparent 100%);
+}
+
+.field-note-caption {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.lightbox.active .lightbox-image {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Responsive: Blueprints */
+@media (max-width: 992px) {
+  .blueprints-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .blueprints-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .blueprint-content {
+    padding: 14px 16px;
+  }
+
+  .blueprint-caption {
+    font-size: 0.9rem;
+  }
+
+  .field-note-card {
+    width: 280px;
+  }
+
+  .lightbox {
+    padding: 20px;
+  }
+
+  .lightbox-close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 70vh;
+  }
+
+  .subsection-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}

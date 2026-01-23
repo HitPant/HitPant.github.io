@@ -95,6 +95,7 @@ function initScrollAnimations() {
 function renderContent() {
   renderHero();
   renderBlogs();
+  renderArtifacts();
   renderProjects();
   renderCertifications();
   renderAbout();
@@ -253,6 +254,166 @@ function renderCertifications() {
   `).join('');
 
   initScrollAnimations();
+}
+
+// Artifacts Section
+function renderArtifacts() {
+  if (!siteData.artifacts) return;
+
+  // Render Architecture Blueprints
+  const blueprintsGrid = document.getElementById('blueprints-grid');
+  if (blueprintsGrid && siteData.artifacts.blueprints) {
+    const INITIAL_COUNT = 8;
+    const hasMore = siteData.artifacts.blueprints.length > INITIAL_COUNT;
+
+    blueprintsGrid.innerHTML = siteData.artifacts.blueprints.map((blueprint, index) => `
+      <div class="blueprint-card${index >= INITIAL_COUNT ? ' hidden' : ''}" data-animate data-animate-delay="${Math.min(index + 1, 6)}" data-image="${blueprint.image}" data-caption="${blueprint.caption}">
+        <div class="blueprint-image">
+          <img src="${blueprint.image}" alt="${blueprint.caption}" loading="lazy">
+          <div class="blueprint-zoom-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <polyline points="9 21 3 21 3 15"></polyline>
+              <line x1="21" y1="3" x2="14" y2="10"></line>
+              <line x1="3" y1="21" x2="10" y2="14"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="blueprint-content">
+          <p class="blueprint-caption">${blueprint.caption}</p>
+          ${blueprint.tags ? `
+            <div class="blueprint-tags">
+              ${blueprint.tags.map(tag => `<span class="blueprint-tag">${tag}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    // Add Show More button if needed
+    if (hasMore) {
+      // Check if button already exists to avoid duplication if re-rendered
+      let btnContainer = blueprintsGrid.nextElementSibling;
+      if (!btnContainer || !btnContainer.classList.contains('show-more-container')) {
+        btnContainer = document.createElement('div');
+        btnContainer.className = 'show-more-container';
+        blueprintsGrid.parentNode.insertBefore(btnContainer, blueprintsGrid.nextSibling);
+      }
+
+      btnContainer.innerHTML = `
+        <button class="show-more-btn" data-target="blueprints-grid">
+          Show More
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+      `;
+
+      btnContainer.querySelector('.show-more-btn').addEventListener('click', function () {
+        const cards = blueprintsGrid.querySelectorAll('.blueprint-card.hidden');
+        const isExpanded = this.classList.contains('expanded');
+
+        if (isExpanded) {
+          // Collapse
+          blueprintsGrid.querySelectorAll('.blueprint-card').forEach((card, i) => {
+            if (i >= INITIAL_COUNT) card.classList.add('hidden');
+          });
+          this.classList.remove('expanded');
+          this.innerHTML = `Show More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
+        } else {
+          // Expand
+          cards.forEach(card => card.classList.remove('hidden'));
+          // Also show already hidden cards (since selector only grabs currenlty hidden ones, logic is slightly diff but effect same)
+          blueprintsGrid.querySelectorAll('.blueprint-card').forEach(card => card.classList.remove('hidden'));
+
+          this.classList.add('expanded');
+          this.innerHTML = `Show Less <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
+        }
+      });
+    }
+
+    // Add click handlers for lightbox
+    blueprintsGrid.querySelectorAll('.blueprint-card').forEach(card => {
+      card.addEventListener('click', () => {
+        openLightbox(card.dataset.image, card.dataset.caption);
+      });
+    });
+  }
+
+  // Render Field Notes
+  const fieldNotesStrip = document.getElementById('field-notes-strip');
+  if (fieldNotesStrip && siteData.artifacts.fieldNotes) {
+    fieldNotesStrip.innerHTML = siteData.artifacts.fieldNotes.map((note, index) => `
+      <div class="field-note-card" data-animate data-animate-delay="${Math.min(index + 1, 4)}" data-image="${note.image}" data-caption="${note.caption}">
+        <div class="field-note-image">
+          <img src="${note.image}" alt="${note.caption}" loading="lazy">
+          <div class="field-note-overlay">
+            <p class="field-note-caption">${note.caption}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Add click handlers for lightbox
+    fieldNotesStrip.querySelectorAll('.field-note-card').forEach(card => {
+      card.addEventListener('click', () => {
+        openLightbox(card.dataset.image, card.dataset.caption);
+      });
+    });
+  }
+
+  // Initialize lightbox
+  initLightbox();
+  initScrollAnimations();
+}
+
+// Lightbox Functions
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const closeBtn = lightbox?.querySelector('.lightbox-close');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeLightbox);
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  }
+
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+}
+
+function openLightbox(imageSrc, caption) {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  if (lightbox && lightboxImage) {
+    lightboxImage.src = imageSrc;
+    lightboxImage.alt = caption || '';
+    if (lightboxCaption) {
+      lightboxCaption.textContent = caption || '';
+    }
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 }
 
 // About Section
